@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `registration`(
   `user_email` varchar(255) not null,
   `user_password` varchar(255) not null,
   PRIMARY KEY (user_id),
-  UNIQUE KEY (user_name)
+  UNIQUE KEY (user_email)
 ) ENGINE = InnoDB;
 
 -- user profile table

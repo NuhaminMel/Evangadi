@@ -5,8 +5,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT;
 
-// import router
-const router = require("./routes/index");
+// import router 
+const router = require("./routes/index"); 
 
 //middleware
 app.use(express.json());

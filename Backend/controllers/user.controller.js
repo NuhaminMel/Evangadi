@@ -1,129 +1,64 @@
-const dbConfig = require("../config/db.config");
-const {
-  register,
-  profile,
-  getAllUsers,
-  getUserByEmail,
-  getUserById,
-} = require("../services/user.service");
+const userService = require("../services/user.service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-module.exports = {
-  createUser: (req, res) => {
-    const { userName, firstName, lastName, email, password } = req.body;
-    console.log(req.body);
-    if (!userName || !firstName || !lastName || !email || !password)
+// Controller function to create a user
+const creatUser = async (req, res) => {
+  try {
+    // Destructure required fields from request body
+    const { user_name, first_name, last_name, user_email, user_password } =
+      req.body;
+    // Check if all required fields are provided
+    if (
+      !user_name ||
+      !first_name ||
+      !last_name ||
+      !user_email ||
+      !user_password
+    )
       return res
         .status(400)
         .json({ msg: "please provide all required information!" });
 
-    if (password.length < 8)
+    // Check if password meets minimum length requirement
+    if (user_password.length < 8)
       return res.status(400).json({ msg: "password must be 8 characters!" });
 
-    dbConfig.query(
-      "SELECT * FROM registration WHERE user_email = ?",
-      [email],
-      (err, results) => {
-        if (err) {
-          return res.status(err).json({ msg: "database connection error" });
-        }
-        if (results.length > 0) {
-          return res.status(400).json({ msg: "user already registerd!" });
-        } else {
-          const salt = bcrypt.genSaltSync();
-          req.body.password = bcrypt.hashSync(password, salt);
+    // Check if user already exists
+    const checkIfUserEXist = await userService.checkIfUserEXist(user_email);
 
-          register(req.body, (err, results) => {
-            if (err) {
-              console.log(err);
-              return res.status(400).json({ msg: "database connection error" });
-            }
-            dbConfig.query(
-              "SELECT * FROM registration WHERE user_email = ?",
-              [email],
-              (err, results) => {
-                if (err) {
-                  return res
-                    .status(err)
-                    .json({ msg: "database connection error" });
-                }
-                req.body.userId = results[0].user_id;
-                console.log(req.body);
-                profile(req.body, (err, results) => {
-                  if (err) {
-                    console.log(err);
-                    return res
-                      .status(500)
-                      .json({ msg: "database connection error" });
-                  }
-                  return res.status(200).json({
-                    msg: "New user added successfully",
-                    data: results,
-                  });
-                });
-              }
-            );
-          });
-        }
-      }
-    );
-  },
-
-  getUsers: (req, res) => {
-    getAllUsers((err, result) => {
-      if (err) {
-        return res.status(500).json({ msg: "Database connection error!" });
-      }
-      return res.status(200).json({ data: result });
-    });
-  },
-
-  getUsersById: (req, res) => {
-    getUserById(req.id, (err, result) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({ msg: "Database connection err!" });
-      }
-      if (!result) {
-        return res.status(404).json({ msg: "Record not found!" });
-      }
-      return res.status(200).json({ data: result });
-    });
-  },
-
-  login: (req, res) => {
-    const { email, password } = req.body;
-    // validation
-
-    if (!email || !password) {
-      return res.status(400).json({ msg: "Not all fields have been provided" });
+    if (checkIfUserEXist.length > 0) {
+      return res.status(400).json({ msg: "you already have an account!" });
     }
-    getUserByEmail(email, (err, result) => {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({ msg: "database connection error" });
-      }
-      if (!result) {
-        return res
-          .status(404)
-          .json({ msg: "No account with this email has been registered" });
-      }
 
-      const isMatch = bcrypt.compareSync(password, result.user_password);
-      if (!isMatch) return res.status(500).json({ msg: "Invalid Credentials" });
+    // Generate salt and hash password
+    const salt = bcrypt.genSaltSync();
+    const hashedPassword = bcrypt.hashSync(user_password, salt);
 
-      const token = jwt.sign({ id: result.user_id }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
-      });
-      return res.json({
-        token,
-        user: {
-          id: result.user_id,
-          display_name: result.user_name,
-        },
-      });
-    });
-  },
+    // Prepare user data to be inserted
+    const formData = {
+      user_name,
+      first_name,
+      last_name,
+      user_email,
+      hashedPassword,
+    };
+
+    // Call service function to create user
+    const create_user = await userService.create_user(formData);
+
+    // Check if user creation was successful
+    if (create_user) {
+      return res
+        .status(200)
+        .json({ status: true, msg: " User Created successfuly!" });
+    } else {
+      return res.status(400).json({ msg: " something went wrong!" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
+
+module.exports = { creatUser };
