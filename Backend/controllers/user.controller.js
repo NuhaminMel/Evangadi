@@ -61,4 +61,47 @@ const creatUser = async (req, res) => {
   }
 };
 
-module.exports = { creatUser };
+// login controller
+const login = async (req, res) => {
+  
+  try {
+    // destructuring email and password
+    const { user_email, user_password } = req.body;
+    
+    // a condition to check if email and password matches
+    if (!user_email || !user_password)
+      return res.status(400).json({ msg: "incorrect credentials" });
+
+      // checking is user exist using the email
+    const checkIfUserEXist = await userService.checkIfUserEXist(user_email);
+    // console.log(checkIfUserEXist);
+    if (checkIfUserEXist.length === 0) {
+      return res.status(400).json({ msg: "User not registered!" });
+    }
+
+    // checking if the hashed password matches
+    const isMatch = await bcrypt.compare(
+      user_password,
+      checkIfUserEXist[0].user_password
+    );
+    // console.log(isMatch);
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Invalid password!" });
+    } else {
+      // signing with jwt
+      const userName = checkIfUserEXist[0].user_name;
+      const userId = checkIfUserEXist[0].user_id;
+      const token = jwt.sign({ userName, userId }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      });
+
+      return res
+        .status(200)
+        .json({ msg: "Login successful!", token, userName, userId });
+    }
+  } catch (error) {
+    return res.status(500).json({msg: "Something went wrong when logging in!"})
+  }
+};
+
+module.exports = { creatUser, login };

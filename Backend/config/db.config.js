@@ -2,12 +2,12 @@ const mysql = require("mysql2/promise");
 require("dotenv").config();
 
 const dbConfig = {
-  host: "localhost",
-  user: "evangadiApp",
-  password: "._JH(xtn3QC0y_XW",
-  database: "evangadiApp",
+  host: process.env.HOST,
+  user: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DB,
   connectionLimit: 10,
-  //   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
 };
 
 const pool = mysql.createPool(dbConfig);
