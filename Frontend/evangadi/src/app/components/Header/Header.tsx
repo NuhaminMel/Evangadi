@@ -38,7 +38,7 @@ export default function Header() {
             <div className="absolute inset-0 bg-orange-500 rounded-3xl transition-transform duration-500 origin-bottom transform scale-y-0 group-hover:scale-y-100 m-0.5"></div>
           </div>
         </div>
-        <div className={` md:hidden lg:hidden absolute top-0 bg-slate-50 py-7 duration-500 w-[70%] ${navBar == false ? " -translate-x-80  ease-in-out z-40" : ""} `}>
+        <div className={` md:hidden lg:hidden absolute top-0 bg-slate-50 py-7 duration-700 w-[70%] ${navBar == false ? " -translate-x-[550px]  ease-in-out z-40" : ""} `}>
             <div className=" flex justify-between mb-5 mr-3 ">
             <img className="h-7 mx-2 " src="/assets/logos/evangadi-logo-black.png" alt="Logo" />
             <RxCross2 className=" text-black text-3xl rounded-full border-gray-300 font-semibold border"/>
