@@ -24,6 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: "Poppins, sans-serif";
 }
 
 @layer utilities {
@@ -31,3 +32,25 @@ body {
     text-wrap: balance;
   }
 }
+
+.hero {
+    margin-top: -80px;
+    background-image: url('/assets/hammer-kid3.jpg');
+    background-size: 120%;
+    background-position: center;
+    height: 1030px; /* Adjust as needed */
+    z-index: 0;
+    position: relative;
+
+  }
+  .bg-none {
+   background: transparent;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .hero {
+    height: 900px; /* Adjust as needed */
+      background-image: url('../../public/assets/hammer-kid-mobile2.jpg');
+    }
+  }
+  

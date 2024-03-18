@@ -1,15 +1,36 @@
 'use client'
-import React, { useState } from "react"; 
+import React, { useEffect, useState } from "react"; 
 import { RxCross2 } from "react-icons/rx";
 
 export default function Header() {
     const [navBar, setNavBar] = useState(false)
+    const [isTopZero, setIsTopZero] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        setTimeout(() => {
+            // Check if body has top position zero
+            const bodyTop = document.body.getBoundingClientRect().top;
+            setIsTopZero(bodyTop === 0);
+          }, 500);
+      };
+  
+      // Attach event listener to scroll event
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up
+      return () => {
+        // Remove event listener when component unmounts
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+    //   console.log(isTopZero)
     return (
-      <main className="">
-        <div className="top-0 w-full h-full flex align-middle items-center justify-between px-4 md:px-7 py-5 bg-black">
+      <main className={` transition duration-700 sticky top-0 z-10 ${isTopZero ? "bg-transparent  translate-y-2" : "bg-black" }  `}>
+        <div className="top-0 w-full h-full flex align-middle items-center justify-between px-4 md:px-7 py-3 ">
           {/* Logo */}
           <div>
-            <img className="h-7 md:h-8" src="/assets/logos/evangadi-logo-white.png" alt="Logo" />
+            <img className="h-6 md:h-7" src="/assets/logos/evangadi-logo-white.png" alt="Logo" />
           </div>
           {/* Toggle bar */}
           <div className="flex align-middle items-center md:hidden">
@@ -33,15 +54,17 @@ export default function Header() {
             </ul>
           </div>
           {/* Sign In */}
-          <div className="hidden md:flex relative rounded-3xl text-black font-semibold bg-white px-7 py-2 group overflow-hidden">
+          <div className="hidden md:flex relative rounded-3xl text-black font-semibold bg-white px-7 py-3 group overflow-hidden">
             <p className="z-20 group-hover:text-white transition-transform duration-700">Sign In</p>
-            <div className="absolute inset-0 bg-orange-500 rounded-3xl transition-transform duration-500 origin-bottom transform scale-y-0 group-hover:scale-y-100 m-0.5"></div>
+              <div className="absolute inset-0 bg-orange-500 rounded-3xl transition-transform duration-500 origin-bottom transform scale-y-0 group-hover:scale-y-100 m-0.5"></div>
           </div>
         </div>
-        <div className={` md:hidden lg:hidden absolute top-0 bg-slate-50 py-7 duration-700 w-[70%] ${navBar == false ? " -translate-x-[550px]  ease-in-out z-40" : ""} `}>
+        <div className={` md:hidden lg:hidden absolute top-0 bg-white py-7 duration-700 w-[70%] ${navBar == false ? " -translate-x-[550px]  ease-in-out z-40" : ""} `}>
             <div className=" flex justify-between mb-5 mr-3 ">
             <img className="h-7 mx-2 " src="/assets/logos/evangadi-logo-black.png" alt="Logo" />
-            <RxCross2 className=" text-black text-3xl rounded-full border-gray-300 font-semibold border"/>
+            <RxCross2 onClick={() => {
+                setNavBar(false)
+            }}  className=" text-black text-3xl rounded-full border-gray-300 font-semibold border"/>
             </div>
  
             <ul style={{ fontFamily: "Poppins, sans-serif" }} className=" flex flex-grow-0 flex-col h-screen gap-3 text-black">
