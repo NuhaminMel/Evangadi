@@ -18,12 +18,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    background: #fff;
     font-family: "Poppins, sans-serif";
 }
 
@@ -34,22 +35,28 @@ body {
 }
 
 .hero {
-    margin-top: -125px;
+    margin-top: -150px;
     background-image: url('/assets/hammer-kid3.jpg');
-    background-size: 120%;
+    background-size: 140%;
     background-repeat: no-repeat;
     background-position: center;
-    height: 1100px; /* Adjust as needed */
-    z-index: 0;
+    height: 1200px; /* Adjust as needed */
+    /* z-index: 1; */
     position: relative;
 
   }
   .bg-none {
    background: transparent;
   }
+  .number {
+    background: linear-gradient(to right, #b13100, #2e0d00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   
   @media screen and (max-width: 768px) {
     .hero {
+        margin-top: -65px;
     height: 900px; /* Adjust as needed */
       background-image: url('../../public/assets/hammer-kid-mobile2.jpg');
     }
