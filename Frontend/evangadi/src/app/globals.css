@@ -34,11 +34,12 @@ body {
 }
 
 .hero {
-    margin-top: -80px;
+    margin-top: -150px;
     background-image: url('/assets/hammer-kid3.jpg');
     background-size: 120%;
+    background-repeat: no-repeat;
     background-position: center;
-    height: 1030px; /* Adjust as needed */
+    height: 1150px; /* Adjust as needed */
     z-index: 0;
     position: relative;
 
