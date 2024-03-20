@@ -9,7 +9,7 @@ export default function Hero() {
             <p className=" font-medium md:text-xl">Before us is a golden opportunity, demanding us to take a bold step forward and join the new digital era.</p>
             <div className=" flex flex-col gap-5 md:flex-row md:gap-3 justify-center items-center">
             <div className=" md:flex relative rounded-3xl text-white font-semibold bg-orange-600 px-9 py-3 group overflow-hidden">
-            <p className="z-20 group-hover:text-white transition-transform duration-700">Join Our Community</p>
+            <p className="z-20 group-hover:text-white group-hover:scale-y-100 transition-transform duration-700">Join Our Community</p>
               <div className="absolute inset-0 bg-orange-500 rounded-3xl transition-transform duration-500 origin-bottom transform scale-y-0 group-hover:scale-y-100 m-0.5"></div>
           </div>
                 <div className=" md:flex relative rounded-3xl text-black font-semibold bg-white px-9 py-3 group overflow-hidden">

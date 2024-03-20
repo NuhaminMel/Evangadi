@@ -93,11 +93,28 @@ body {
     z-index: 2;
 }
 
+.middel_banner{
+    background-image: url('../../public/assets/bg1-evangadiTech19.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 450px; 
+    margin-bottom: 50px;
+    /* position: relative; */
+
+}
+
   @media screen and (max-width: 768px) {
     .hero {
         margin-top: -65px;
     height: 900px; /* Adjust as needed */
       background-image: url('../../public/assets/hammer-kid-mobile2.jpg');
+    }
+    .middel_banner{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: calc(100% - 40%);
+    
     }
   }
   @media screen and (min-width: 768px) and (max-width: 860px) {
