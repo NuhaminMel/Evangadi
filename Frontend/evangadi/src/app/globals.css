@@ -110,6 +110,22 @@ body {
 .card-img img {
     transform: scale(1) perspective(1040px) rotateY(18deg) rotateX(0) rotate(0);
 }
+.card-img-rev,
+.card-img-bottom-rev {
+    perspective: 1500px;
+    transform-style: preserve-3d;
+    perspective-origin: 0;
+}
+
+.card-img-rev img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: rotateY(-35deg) rotateX(15deg);
+    border-radius: 0.625rem;
+    box-shadow: 25px 60px 125px -25px rgba(80,102,144,.1), 16px 40px 75px -40px rgba(0,0,0,.2);
+
+}
+
 
   @media screen and (max-width: 768px) {
     .hero {

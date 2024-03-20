@@ -2,6 +2,7 @@
 
 import Acadamy from "./components/Acadamy/Acadamy";
 import Container from "./components/Counters/Container";
+import FiveSteps from "./components/FiveSteps/FiveSteps";
 import GetPaid from "./components/GetPaid/GetPaid";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
@@ -18,6 +19,7 @@ export default function index() {
         <GetPaid/>
         <MiddleBanner/>
         <Acadamy/>
+        <FiveSteps/>
      
     </div>
   )

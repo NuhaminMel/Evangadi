@@ -10,7 +10,7 @@ import { FaLayerGroup } from "react-icons/fa";
 
 export default function Acadamy() {
   return (
-    <main className=' flex flex-col items-center justify-center my-16 -z-50 mb-[30px]'>
+    <main className=' flex flex-col items-center justify-center my-16 -z-50 '>
         <div className=' w-3/4 md:w-1/3 flex flex-col gap-1 lg:gap-4 text-center my-16'>
         <h1 className=' text-4xl lg:text-5xl text-[#344767] font-[1000]'>Evangadi</h1>
         <h1 className=' text-4xl lg:text-5xl text-[#344767] font-[1000]'>Coding Academy</h1>
