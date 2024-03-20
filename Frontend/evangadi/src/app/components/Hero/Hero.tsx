@@ -2,7 +2,7 @@ import Counter from "../Counters/Counters";
 
 export default function Hero() {
   return (
-    <main className=" -mb-48  md:-mb-48 -z-10">
+    <main className="  ">
       <div className=" hero h-screen flex items-center justify-center md:pt-52">
         <div className=" w-10/12  md:w-7/12 text-center flex flex-col gap-5 md:gap-8 mt-12 md:mt-52">
             <p className=" font-extrabold text-4xl md:text-6xl gap-3 flex">Bypass The Industrial, Dive Into The Digital!</p>

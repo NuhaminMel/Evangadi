@@ -24,7 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-    background: #fff;
+    background: white;
     font-family: "Poppins, sans-serif";
 }
 
@@ -53,12 +53,62 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+  .hexagon-icon {
+    
+    height: 15px;
+    width: 14px;
+    position: relative;
+    display: block;
+    margin: 5px auto 0;
+}
+
+.hexagon-icon:before,
+.hexagon-icon:after {
+    content: '';
+    background: #ff8500;
+    position: absolute;
+    width: 75px;
+    height: 1px;
+    top: 6px;
+    margin: 0 -5px;
+}
+
+.hexagon-icon:before {
+    left: -75px; /* Position the line before */
+}
+
+.hexagon-icon:after {
+    right: -75px; /* Position the line after */
+}
+
+.hexagon-icon i {
+    position: relative;
+    width: 14px;
+    height: 8px;
+    border-left: solid 3px #ff8500;
+    border-right: solid 3px #ff8500;
+    display: block;
+    margin: 0 auto;
+    top: 3px;
+    z-index: 2;
+}
+
   @media screen and (max-width: 768px) {
     .hero {
         margin-top: -65px;
     height: 900px; /* Adjust as needed */
       background-image: url('../../public/assets/hammer-kid-mobile2.jpg');
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 860px) {
+    .hero {
+        background-size: 200%;
+    }
+}
+
+  @media screen and (min-width: 1300px) {
+    .hero {
+        background-size: 100%;
     }
   }
   
