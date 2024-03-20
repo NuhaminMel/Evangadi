@@ -26,7 +26,7 @@ export default function Header() {
     }, []);
     //   console.log(isTopZero)
     return (
-      <main className={` transition duration-700 sticky top-0 z-10 ${isTopZero ? "bg-transparent  translate-y-2" : "bg-black" }  `}>
+      <main className={` transition duration-700 sticky top-0 z-50 ${isTopZero ? "bg-transparent z-50 translate-y-2" : "bg-black" }  `}>
         <div className="top-0 w-full h-full flex align-middle items-center justify-between px-4 md:px-7 py-3 ">
           {/* Logo */}
           <div>

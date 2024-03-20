@@ -1,5 +1,6 @@
 
 
+import Acadamy from "./components/Acadamy/Acadamy";
 import Container from "./components/Counters/Container";
 import GetPaid from "./components/GetPaid/GetPaid";
 import Header from "./components/Header/Header";
@@ -16,6 +17,7 @@ export default function index() {
         <RoadMap/>
         <GetPaid/>
         <MiddleBanner/>
+        <Acadamy/>
      
     </div>
   )

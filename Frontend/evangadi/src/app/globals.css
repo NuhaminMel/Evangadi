@@ -103,6 +103,13 @@ body {
     /* position: relative; */
 
 }
+.card-img, .card-img-bottom {
+    border-bottom-right-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+.card-img img {
+    transform: scale(1) perspective(1040px) rotateY(18deg) rotateX(0) rotate(0);
+}
 
   @media screen and (max-width: 768px) {
     .hero {
