@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import MiddleBanner from "./components/MiddleBanner/MiddleBanner";
 import RoadMap from "./components/RoadMap/RoadMap";
+import ScholarShip from "./components/ScholarShip/ScholarShip";
 
 export default function index() {
   return (
@@ -20,6 +21,7 @@ export default function index() {
         <MiddleBanner/>
         <Acadamy/>
         <FiveSteps/>
+        <ScholarShip/>
      
     </div>
   )

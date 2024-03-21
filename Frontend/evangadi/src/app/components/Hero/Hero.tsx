@@ -4,8 +4,9 @@ export default function Hero() {
   return (
     <main className="  ">
       <div className=" hero h-screen flex items-center justify-center md:pt-52">
-        <div className=" w-10/12  md:w-7/12 text-center flex flex-col gap-5 md:gap-8 mt-12 md:mt-52">
-            <p className=" font-extrabold text-4xl md:text-6xl gap-3 flex">Bypass The Industrial, Dive Into The Digital!</p>
+        <div className=" w-10/12  md:w-7/12 text-center flex flex-col justify-center items-center gap-5 md:gap-5 mt-12 md:mt-52 ">
+            <p className=" font-extrabold text-4xl md:text-6xl gap-3 flex">Bypass The Industrial, </p>
+            <p className=" font-extrabold text-4xl md:text-6xl gap-3 flex"> Dive Into The Digital!</p>
             <p className=" font-medium md:text-xl">Before us is a golden opportunity, demanding us to take a bold step forward and join the new digital era.</p>
             <div className=" flex flex-col gap-5 md:flex-row md:gap-3 justify-center items-center">
             <div className=" md:flex relative rounded-3xl text-white font-semibold bg-orange-600 px-9 py-3 group overflow-hidden">
